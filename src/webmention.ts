@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetUrl = "https://webmention-client.vercel.app/";
         console.log("Source URL:", sourceUrl);
         //sendWebmention(sourceUrl, targetUrl);
-        const web_button = document.getElementById("webmention_button");
+        const web_button = document.getElementById("webmention-button");
         let webmentionEndpoint;
         web_button?.addEventListener("click", async function(){
             console.log("Webmention button clicked");
