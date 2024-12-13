@@ -1,4 +1,4 @@
-async function sendWebmention(sourceUrl: string, targetUrl: string): Promise<void> {
+/*async function sendWebmention(sourceUrl: string, targetUrl: string): Promise<void> {
     try {
         const response = await fetch(targetUrl, {
             method: "POST",
@@ -19,7 +19,7 @@ async function sendWebmention(sourceUrl: string, targetUrl: string): Promise<voi
     } catch (error) {
         console.error("Error sending Webmention:", error);
     }
-}
+}*/
 
 async function discoverWebmentionEndpoint(targetUrl: string): Promise<string | null> {
     try {
