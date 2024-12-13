@@ -7,7 +7,7 @@ async function sendWebmention(sourceUrl: string, targetUrl: string): Promise<voi
             },
             body: new URLSearchParams({
                 source: sourceUrl,
-                target: targetUrl,
+                target: 'https://webmention-client.vercel.app/blogpost1',
             }).toString(),
         });
 
@@ -72,7 +72,7 @@ async function discoverWebmentionEndpoint(targetUrl: string): Promise<string | n
 document.addEventListener("DOMContentLoaded", () => {
     (async () => {
         const sourceUrl = "https://webmmention-workshop.vercel.app/";
-        const targetUrl = "https://webmention-client.vercel.app/blogpost1";
+        const targetUrl = "https://webmention-client.vercel.app/";
         console.log("Source URL:", sourceUrl);
         //sendWebmention(sourceUrl, targetUrl);
         const web_button = document.getElementById("webmention_button");
