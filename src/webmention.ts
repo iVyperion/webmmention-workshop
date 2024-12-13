@@ -73,7 +73,12 @@ async function discoverWebmentionEndpoint(targetUrl: string): Promise<string | n
     //const sourceUrl = "https://webmmention-workshop.vercel.app/";
     const targetUrl = "https://webmention-client.vercel.app/";
     //sendWebmention(sourceUrl, targetUrl);
-    const webmentionEndpoint = await discoverWebmentionEndpoint(targetUrl);
+    const web_button = document.getElementById("webmention_button");
+    let webmentionEndpoint
+    web_button?.addEventListener("click", async function(){
+        webmentionEndpoint = await discoverWebmentionEndpoint(targetUrl);
+        //sendWebmention(sourceUrl, targetUrl);
+    });
 
     if (webmentionEndpoint) {
         console.log("Webmention endpoint discovered:", webmentionEndpoint);
