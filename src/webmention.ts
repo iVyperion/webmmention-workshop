@@ -69,27 +69,29 @@ async function discoverWebmentionEndpoint(targetUrl: string): Promise<string | n
     }
 }
 
-(async () => {
-    const sourceUrl = "https://webmmention-workshop.vercel.app/";
-    const targetUrl = "https://webmention-client.vercel.app/";
-    //sendWebmention(sourceUrl, targetUrl);
-    const web_button = document.getElementById("webmention_button");
-    let webmentionEndpoint;
-    web_button?.addEventListener("click", async function(){
-        webmentionEndpoint = await discoverWebmentionEndpoint(targetUrl);
-        if (webmentionEndpoint) {
-            sendWebmention(sourceUrl, webmentionEndpoint.toString());
-        } else {
-            console.log("No Webmention endpoint found.");
-        }
-    });
-
-    if (webmentionEndpoint) {
-        console.log("Webmention endpoint discovered:", webmentionEndpoint);
-    } else {
-        console.log("No Webmention endpoint found.");
-    }
-})();
-
-
-
+document.addEventListener("DOMContentLoaded", () => {
+    (async () => {
+        const sourceUrl = "https://webmmention-workshop.vercel.app/";
+        const targetUrl = "https://webmention-client.vercel.app/";
+        console.log("Source URL:", sourceUrl);
+        //sendWebmention(sourceUrl, targetUrl);
+        const web_button = document.getElementById("webmention_button");
+        let webmentionEndpoint;
+        web_button?.addEventListener("click", async function(){
+            console.log("Webmention button clicked");
+            webmentionEndpoint = await discoverWebmentionEndpoint(targetUrl);
+            if (webmentionEndpoint) {
+                sendWebmention(sourceUrl, webmentionEndpoint.toString());
+            } else {
+                console.log("No Webmention endpoint found.");
+            }
+            
+            if (webmentionEndpoint) {
+                console.log("Webmention endpoint discovered:", webmentionEndpoint);
+            } else {
+                console.log("No Webmention endpoint found.");
+            }
+        });
+    
+    })();    
+})    
