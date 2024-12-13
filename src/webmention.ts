@@ -1,4 +1,4 @@
-/*async function sendWebmention(sourceUrl: string, targetUrl: string): Promise<void> {
+async function sendWebmention(sourceUrl: string, targetUrl: string): Promise<void> {
     try {
         const response = await fetch(targetUrl, {
             method: "POST",
@@ -19,7 +19,7 @@
     } catch (error) {
         console.error("Error sending Webmention:", error);
     }
-}*/
+}
 
 async function discoverWebmentionEndpoint(targetUrl: string): Promise<string | null> {
     try {
@@ -70,14 +70,18 @@ async function discoverWebmentionEndpoint(targetUrl: string): Promise<string | n
 }
 
 (async () => {
-    //const sourceUrl = "https://webmmention-workshop.vercel.app/";
+    const sourceUrl = "https://webmmention-workshop.vercel.app/";
     const targetUrl = "https://webmention-client.vercel.app/";
     //sendWebmention(sourceUrl, targetUrl);
     const web_button = document.getElementById("webmention_button");
-    let webmentionEndpoint
+    let webmentionEndpoint;
     web_button?.addEventListener("click", async function(){
         webmentionEndpoint = await discoverWebmentionEndpoint(targetUrl);
-        //sendWebmention(sourceUrl, targetUrl);
+        if (webmentionEndpoint) {
+            sendWebmention(sourceUrl, webmentionEndpoint.toString());
+        } else {
+            console.log("No Webmention endpoint found.");
+        }
     });
 
     if (webmentionEndpoint) {
